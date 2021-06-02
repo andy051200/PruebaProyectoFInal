@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.o
+$C:\Users\ANDYBO~1\AppData\Local\Temp\skig.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 10 10 3 2
 config CONFIG 4 2007 2007 2 2
@@ -70,111 +70,111 @@ STRING 155-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\pruebaProyectoFinal.X.production.o
-13 cinit CODE >478:C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.s
-13 cinit CODE >481:C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.s
-13 cinit CODE >492:C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.s
-14 cinit CODE >493:C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.s
-15 cinit CODE >499:C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.s
-15 cinit CODE >501:C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.s
-16 cinit CODE >502:C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.s
-4 intentry CODE >44:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-19 text2 CODE >44:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-19 text2 CODE >46:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-1D text2 CODE >48:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-37 text2 CODE >50:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-3A text2 CODE >51:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-3B text2 CODE >52:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-3C text2 CODE >53:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-45 text2 CODE >54:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-48 text2 CODE >55:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-49 text2 CODE >56:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-4A text2 CODE >57:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-4C text2 CODE >58:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-4D text2 CODE >59:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-4E text2 CODE >60:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-68 text2 CODE >62:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-6B text2 CODE >63:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-6C text2 CODE >64:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-6D text2 CODE >65:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-74 text2 CODE >66:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-77 text2 CODE >67:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-78 text2 CODE >68:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-79 text2 CODE >69:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-7B text2 CODE >70:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-7C text2 CODE >71:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-7D text2 CODE >72:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-7D text2 CODE >74:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-80 text2 CODE >75:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-81 text2 CODE >76:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-82 text2 CODE >77:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-89 text2 CODE >78:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-8C text2 CODE >79:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-8D text2 CODE >80:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-8E text2 CODE >81:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-90 text2 CODE >82:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-91 text2 CODE >86:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-95 text2 CODE >88:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-99 text2 CODE >90:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-A2 text2 CODE >92:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-A9 text2 CODE >93:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-AD text2 CODE >94:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-B0 text2 CODE >99:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-B9 text1 CODE >125:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-B9 text1 CODE >128:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-BC text1 CODE >129:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-BD text1 CODE >130:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-BE text1 CODE >132:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-C1 text1 CODE >133:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-C2 text1 CODE >134:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-C3 text1 CODE >136:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-C4 text1 CODE >138:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-C5 text1 CODE >139:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-C6 text1 CODE >141:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-C9 text1 CODE >142:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-CA text1 CODE >143:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-CB text1 CODE >144:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-CC text1 CODE >147:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-D2 text1 CODE >148:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-D3 text1 CODE >151:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-D4 text1 CODE >152:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-D5 text1 CODE >153:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-D7 text1 CODE >154:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-DB text1 CODE >159:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-DE text1 CODE >160:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-DF text1 CODE >161:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-E0 text1 CODE >162:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-E6 text1 CODE >163:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-E8 text1 CODE >164:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-EC text1 CODE >165:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-EF text1 CODE >170:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-F2 text1 CODE >171:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-F6 text1 CODE >172:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-FA text1 CODE >173:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-FC text1 CODE >174:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-FE text1 CODE >176:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-101 text1 CODE >177:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-107 text1 CODE >178:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-109 text1 CODE >179:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-10A text1 CODE >182:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-10B text1 CODE >183:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-10D text1 CODE >184:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-10E text1 CODE >187:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-10F text1 CODE >188:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-112 text1 CODE >189:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-113 text1 CODE >196:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-114 text1 CODE >197:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-115 text1 CODE >198:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-116 text1 CODE >199:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-117 text1 CODE >200:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-118 text1 CODE >201:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-11B text1 CODE >203:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-11C maintext CODE >105:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-11C maintext CODE >107:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-121 maintext CODE >108:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-125 maintext CODE >109:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-128 maintext CODE >112:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-143 maintext CODE >114:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
-151 maintext CODE >117:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+13 cinit CODE >478:C:\Users\ANDYBO~1\AppData\Local\Temp\skig.s
+13 cinit CODE >481:C:\Users\ANDYBO~1\AppData\Local\Temp\skig.s
+13 cinit CODE >492:C:\Users\ANDYBO~1\AppData\Local\Temp\skig.s
+14 cinit CODE >493:C:\Users\ANDYBO~1\AppData\Local\Temp\skig.s
+15 cinit CODE >499:C:\Users\ANDYBO~1\AppData\Local\Temp\skig.s
+15 cinit CODE >501:C:\Users\ANDYBO~1\AppData\Local\Temp\skig.s
+16 cinit CODE >502:C:\Users\ANDYBO~1\AppData\Local\Temp\skig.s
+4 intentry CODE >58:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+19 text2 CODE >58:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+19 text2 CODE >60:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+1D text2 CODE >62:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+37 text2 CODE >64:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+3A text2 CODE >65:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+3B text2 CODE >66:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+3C text2 CODE >67:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+45 text2 CODE >68:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+48 text2 CODE >69:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+49 text2 CODE >70:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+4A text2 CODE >71:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+4C text2 CODE >72:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+4D text2 CODE >73:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+4E text2 CODE >74:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+68 text2 CODE >76:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+6B text2 CODE >77:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+6C text2 CODE >78:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+6D text2 CODE >79:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+74 text2 CODE >80:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+77 text2 CODE >81:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+78 text2 CODE >82:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+79 text2 CODE >83:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+7B text2 CODE >84:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+7C text2 CODE >85:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+7D text2 CODE >86:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+7D text2 CODE >88:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+80 text2 CODE >89:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+81 text2 CODE >90:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+82 text2 CODE >91:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+89 text2 CODE >92:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+8C text2 CODE >93:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+8D text2 CODE >94:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+8E text2 CODE >95:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+90 text2 CODE >96:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+91 text2 CODE >100:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+95 text2 CODE >102:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+99 text2 CODE >104:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+A2 text2 CODE >106:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+A9 text2 CODE >107:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+AD text2 CODE >108:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+B0 text2 CODE >113:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+B9 text1 CODE >139:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+B9 text1 CODE >142:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+BC text1 CODE >143:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+BD text1 CODE >144:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+BE text1 CODE >146:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+C1 text1 CODE >147:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+C2 text1 CODE >148:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+C3 text1 CODE >150:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+C4 text1 CODE >152:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+C5 text1 CODE >153:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+C6 text1 CODE >155:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+C9 text1 CODE >156:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+CA text1 CODE >157:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+CB text1 CODE >158:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+CC text1 CODE >161:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+D2 text1 CODE >162:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+D3 text1 CODE >165:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+D4 text1 CODE >166:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+D5 text1 CODE >167:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+D7 text1 CODE >168:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+DB text1 CODE >173:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+DE text1 CODE >174:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+DF text1 CODE >175:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+E0 text1 CODE >176:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+E6 text1 CODE >177:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+E8 text1 CODE >178:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+EC text1 CODE >179:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+EF text1 CODE >184:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+F2 text1 CODE >185:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+F6 text1 CODE >186:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+FA text1 CODE >187:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+FC text1 CODE >188:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+FE text1 CODE >190:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+101 text1 CODE >191:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+107 text1 CODE >192:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+109 text1 CODE >193:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+10A text1 CODE >196:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+10B text1 CODE >197:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+10D text1 CODE >198:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+10E text1 CODE >201:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+10F text1 CODE >202:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+112 text1 CODE >203:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+113 text1 CODE >210:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+114 text1 CODE >211:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+115 text1 CODE >212:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+116 text1 CODE >213:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+117 text1 CODE >214:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+118 text1 CODE >215:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+11B text1 CODE >217:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+11C maintext CODE >119:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+11C maintext CODE >121:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+121 maintext CODE >122:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+125 maintext CODE >123:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+128 maintext CODE >126:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+143 maintext CODE >128:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+151 maintext CODE >131:C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -196,20 +196,20 @@ __Hspace_4 4010 0 ABS 0 - -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
 _TMR0 1 0 ABS 0 - dist/default/production\pruebaProyectoFinal.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.o
+___sp 0 0 STACK 2 stack C:\Users\ANDYBO~1\AppData\Local\Temp\skig.o
 _main 238 0 CODE 0 maintext dist/default/production\pruebaProyectoFinal.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\pruebaProyectoFinal.X.production.o
-start 20 0 CODE 0 init C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.o
+start 20 0 CODE 0 init C:\Users\ANDYBO~1\AppData\Local\Temp\skig.o
 __size_of_main 0 0 ABS 0 - dist/default/production\pruebaProyectoFinal.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OPTION_REGbits 81 0 ABS 0 - dist/default/production\pruebaProyectoFinal.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\ANDYBO~1\AppData\Local\Temp\skig.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\ANDYBO~1\AppData\Local\Temp\skig.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\ANDYBO~1\AppData\Local\Temp\skig.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\ANDYBO~1\AppData\Local\Temp\skig.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\ANDYBO~1\AppData\Local\Temp\skig.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\ANDYBO~1\AppData\Local\Temp\skig.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OSCCONbits 8F 0 ABS 0 - dist/default/production\pruebaProyectoFinal.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\pruebaProyectoFinal.X.production.o
@@ -219,14 +219,14 @@ _ADRESH 1E 0 ABS 0 - dist/default/production\pruebaProyectoFinal.X.production.o
 _CCPR1L 15 0 ABS 0 - dist/default/production\pruebaProyectoFinal.X.production.o
 _CCPR2L 1B 0 ABS 0 - dist/default/production\pruebaProyectoFinal.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-___stackhi 0 0 ABS 0 - C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.o
-___stacklo 0 0 ABS 0 - C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.o
+___stackhi 0 0 ABS 0 - C:\Users\ANDYBO~1\AppData\Local\Temp\skig.o
+___stacklo 0 0 ABS 0 - C:\Users\ANDYBO~1\AppData\Local\Temp\skig.o
 __size_of_setup 0 0 ABS 0 - dist/default/production\pruebaProyectoFinal.X.production.o
 start_initialization 26 0 CODE 0 cinit dist/default/production\pruebaProyectoFinal.X.production.o
 _TRISAbits 85 0 ABS 0 - dist/default/production\pruebaProyectoFinal.X.production.o
 _TRISBbits 86 0 ABS 0 - dist/default/production\pruebaProyectoFinal.X.production.o
 _TRISCbits 87 0 ABS 0 - dist/default/production\pruebaProyectoFinal.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.o
+___int_sp 0 0 STACK 2 stack C:\Users\ANDYBO~1\AppData\Local\Temp\skig.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -270,7 +270,7 @@ saved_w 7E 0 ABS 0 - dist/default/production\pruebaProyectoFinal.X.production.o
 _cuenta 77 0 COMMON 1 bssCOMMON dist/default/production\pruebaProyectoFinal.X.production.o
 __end_of_isr 172 0 CODE 0 text2 dist/default/production\pruebaProyectoFinal.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\ANDYBO~1\AppData\Local\Temp\skig.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production\pruebaProyectoFinal.X.production.o
 __pmaintext 238 0 CODE 0 maintext dist/default/production\pruebaProyectoFinal.X.production.o
 __Lcommon 0 0 ABS 0 common -

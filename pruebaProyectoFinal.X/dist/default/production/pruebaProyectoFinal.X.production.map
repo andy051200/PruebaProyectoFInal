@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.31\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\pruebaProyectoFinal.X.production.sym \
   --cmf=dist/default/production\pruebaProyectoFinal.X.production.cmf -z \
-  -Q16F887 -oC:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.2 \
+  -Q16F887 -oC:\Users\ANDYBO~1\AppData\Local\Temp\skig.2 \
   --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/pruebaProyectoFinal.X.production.map -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ASTACK=0110h-016Fh -pstack=STACK \
@@ -19,7 +19,7 @@ Linker command line:
   -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 \
   -preset_vec=00h,intentry=04h,init,end_init -ppowerup=CODE -pcinit=CODE \
-  -pfunctab=ENTRY -k C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.o \
+  -pfunctab=ENTRY -k C:\Users\ANDYBO~1\AppData\Local\Temp\skig.o \
   dist/default/production\pruebaProyectoFinal.X.production.o 
 
 Object code version is 3.11
@@ -29,7 +29,7 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\ANDYBO~1\AppData\Local\Temp\s4fs.o
+C:\Users\ANDYBO~1\AppData\Local\Temp\skig.o
                 end_init                             10       10        3        8       0
                 reset_vec                             0        0        3        0       0
                 config                             2007     2007        2        0       4
@@ -274,7 +274,7 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 105 in file "proyectofinal_main.c"
+		line 119 in file "proyectofinal_main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -303,7 +303,7 @@ Total ram usage:        1 bytes
 
  *************** function _setup *****************
  Defined at:
-		line 125 in file "proyectofinal_main.c"
+		line 139 in file "proyectofinal_main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -333,7 +333,7 @@ Total ram usage:        1 bytes
 
  *************** function _isr *****************
  Defined at:
-		line 44 in file "proyectofinal_main.c"
+		line 58 in file "proyectofinal_main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type

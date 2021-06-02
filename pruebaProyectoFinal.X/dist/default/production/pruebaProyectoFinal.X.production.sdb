@@ -11,11 +11,11 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"44 C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+"58 C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
 [v _isr isr `II(v  1 e 1 0 ]
-"105
+"119
 [v _main main `(v  1 e 1 0 ]
-"125
+"139
 [v _setup setup `(v  1 e 1 0 ]
 "59 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
@@ -245,20 +245,20 @@
 "3404
 [u S161 . 1 `S152 1 . 1 0 ]
 [v _ANSELbits ANSELbits `VES161  1 e 1 @392 ]
-"39 C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
+"53 C:\Users\Andy Bonilla\Documents\GitHub\PruebaProyectoFInal\pruebaProyectoFinal.X\proyectofinal_main.c
 [v _cuenta cuenta `i  1 e 2 0 ]
-"105
+"119
 [v _main main `(v  1 e 1 0 ]
 {
-"121
+"135
 } 0
-"125
+"139
 [v _setup setup `(v  1 e 1 0 ]
 {
-"203
+"217
 } 0
-"44
+"58
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"99
+"113
 } 0
