@@ -57,16 +57,19 @@ unsigned char potenciometro1 [5] = {0x04,0x05,0x06,0x07,0x08};
 int cuenta;
 uint8_t potValue;
 uint8_t botonPrevState;
-int antirrebote=0;
-
+int antirrebote1;
+int antirrebote2;
+char dato_recibido;
+//int botonPrevState;
 /*-----------------------------------------------------------------------------
  ---------------------------- INTERRUPCIONES ----------------------------------
  -----------------------------------------------------------------------------*/
 void __interrupt() isr(void) //funcion de interrupciones
 {
+    //interrupcion por timer0
     if (INTCONbits.T0IF)
     {
-        if (cuenta >0 && cuenta <340)
+        if (cuenta >0 && cuenta <340)  //variar oscilacion de 18ms
         {
             PORTDbits.RD0=1;
             PORTDbits.RD1=1;
@@ -78,7 +81,7 @@ void __interrupt() isr(void) //funcion de interrupciones
             TMR0 = 70;  
             INTCONbits.T0IF = 0;
         }
-        else if (cuenta >340 && cuenta <682)
+        else if (cuenta >340 && cuenta <682)    //variar oscilacion de 18.5ms
         {
             PORTDbits.RD0=1;
             PORTDbits.RD1=1;
@@ -89,8 +92,8 @@ void __interrupt() isr(void) //funcion de interrupciones
             PORTDbits.RD2=0;
             TMR0 = 72;
             INTCONbits.T0IF=0;
-        }
-        else
+        }   
+        else                                    //variar oscilacion de 19ms
         {
             PORTDbits.RD0=1;
             PORTDbits.RD1=1;
@@ -104,8 +107,25 @@ void __interrupt() isr(void) //funcion de interrupciones
         }
     }
     
-    if (PIR1bits.ADIF)
+    //interrupcion por recepcion serial
+    if(PIR1bits.RCIF)
     {
+        RCREG=dato_recibido;    //se almacena dato recibido en variable
+    }
+}
+
+
+/*-----------------------------------------------------------------------------
+ ----------------------------- MAIN LOOP --------------------------------------
+ -----------------------------------------------------------------------------*/
+void main(void)
+{
+    setup();
+    __delay_us(100);
+    ADCON0bits.GO=1;
+    while(1)
+    {
+       //---------------switch de canales de ADC
         if (ADCON0bits.GO==0)
         {
             switch(ADCON0bits.CHS)
@@ -131,84 +151,109 @@ void __interrupt() isr(void) //funcion de interrupciones
             __delay_us(100);
             ADCON0bits.GO=1;   
         }
-    
-    }
-}
-
-
-/*-----------------------------------------------------------------------------
- ----------------------------- MAIN LOOP --------------------------------------
- -----------------------------------------------------------------------------*/
-void main(void)
-{
-    setup();
-    __delay_us(100);
-    ADCON0bits.GO=1;
-    while(1)
-    {
-//        if (RB0 == 1)
-//        {
-//            while(RB0==1)
-//            __delay_ms(10);
-//            
-//            antirrebote++;
-//
-//            if (antirrebote>3)
-//            {
-//                antirrebote=0;
-//            }
-//        }
-//        
-//        switch(antirrebote)
-//        {
-//                
-//            case(0):
-//                writeToEEPROM(cuenta, potenciometro1 [0]);
-//                PORTE=antirrebote;
-//                break;
-//                
-//            case(1):
-//                PORTE=antirrebote;
-//                writeToEEPROM(cuenta, potenciometro1 [1]);
-//                break;
-//                
-//            case(2):
-//                PORTE=antirrebote;
-//                writeToEEPROM(cuenta, potenciometro1 [2]);
-//                break;
-//                
-//            case(3):
-//                PORTE=antirrebote;
-//                writeToEEPROM(cuenta, potenciometro1 [3]);
-//                break;
-//        }
-            
-        //--------------------------
-        /*if (ADCON0bits.GO==0)
+        //---------------escritura de EEPROM
+        if (RB0 == 1)
+            antirrebote1 = 1;
+        
+        if (RB0 == 0 && antirrebote1 == 1)
         {
-            switch(ADCON0bits.CHS)
+            switch(antirrebote1)
             {
-                case(0):
-                    cuenta=ADRESH;  //potenciometro 1
-                    __delay_us(100);
-                    ADCON0bits.GO=1;
-                    break;
-                    
                 case(1):
-                    CCPR1L =ADRESH;             //valor de pot2 en CCP1
-                    __delay_us(100);            //delay para cargar capacitor
-                    ADCON0bits.CHS=2;           //switch de canal
+                    writeToEEPROM(cuenta, potenciometro1[0]);
+                    antirrebote1++;
                     break;
-                    
+                
                 case(2):
-                    CCPR2L =ADRESH;             //valor del pot3 en CCP2
-                    __delay_us(100);            //delay para cargar capacitor
-                    ADCON0bits.CHS=0;           //switch de canal
+                    writeToEEPROM(cuenta, potenciometro1[1]);
+                    antirrebote1++;
+                    break;
+                
+                case(3):
+                    writeToEEPROM(cuenta, potenciometro1[2]);
+                    antirrebote1++;
+                    break;
+                
+                case(4):
+                    writeToEEPROM(cuenta, potenciometro1[3]);
+                    antirrebote1++;
                     break;
             }
-            __delay_us(100);
-            ADCON0bits.GO=1;   
-        }*/
+            if (antirrebote1>4)
+            {
+                antirrebote1=0;
+            }
+        }
+        //---------------- lectura desde EEPROM
+        if (RB1 == 1)
+            antirrebote2 = 1;
+        
+        if (RB0 == 0 && antirrebote2 == 1)
+        {
+             switch(antirrebote2)
+             {
+                 case(1):
+                     readFromEEPROM(potenciometro1[0]);
+                     antirrebote2++;
+                     __delay_ms(100);
+                     break;
+                     
+                 case(2):
+                     readFromEEPROM(potenciometro1[1]);
+                     antirrebote2++;
+                     __delay_ms(100);
+                     break;
+                     
+                 case(3):
+                     readFromEEPROM(potenciometro1[2]);
+                     antirrebote2++;
+                     __delay_ms(100);
+                     break;
+                     
+                 case(4):
+                     readFromEEPROM(potenciometro1[3]);
+                     antirrebote2++;
+                     __delay_ms(100);
+                     break;   
+             }
+             if (antirrebote2>4)
+             {
+                 antirrebote2=0;
+             }
+        }
+        
+        //-------recepcion UART
+        switch(dato_recibido)
+        {
+            case(48):       //ver si recibio un 0 en ascii
+                cuenta=200;
+                TMR0 = 70;
+                
+                __delay_ms(100);
+               
+                break;
+                
+            case(49):       //ver si recibio un 1 en ascii
+                cuenta=500;
+                TMR0 = 72;
+                __delay_ms(100);
+                break;
+                
+            case(50):       //ver si recibio un 20 en ascii
+                cuenta=800;
+                TMR0 = 74;
+                __delay_ms(100);
+                break;
+            
+            case(51):
+                readFromEEPROM(potenciometro1[0]);
+                __delay_ms(100);
+                break;
+        }
+        
+        //-------transmisioon UART
+        
+        
         
     }
 }
@@ -226,7 +271,7 @@ void setup(void)
     TRISAbits.TRISA1=1;     //RA1 como entrada
     TRISAbits.TRISA2=1;     //RA2 como entrada
     
-    TRISBbits.TRISB0=1;     //RB0 como entrada
+    TRISB=0xff;     //RB0 como entrada
     
     TRISD=0x00;             //PortD como salida
     TRISE=0x00;
@@ -245,6 +290,11 @@ void setup(void)
     OPTION_REGbits.PSA = 0;     //Uso pre-escaler
     OPTION_REGbits.PS = 0b111;  //PS = 111 / 1:256
     TMR0 = 78;                  //Reinicio del timmer
+    
+    //OPTION_REGbits.nRBPU = 0; // enable Individual pull-ups
+    //WPUBbits.WPUB0 = 1;
+    
+    
     
     //CONFIGURACION DEL TIMER1
     
@@ -282,15 +332,28 @@ void setup(void)
     TRISCbits.TRISC1= 0;        // salida del pwm 2
    
     //CONFIGURACION DE UART
+    //transmision
+    TXSTAbits.SYNC = 0;
+    TXSTAbits.BRGH = 1;
+    //braudeaje
+    BAUDCTLbits.BRG16 = 1;
+    SPBRG = 25;         // SPBRGH:SPBRG = 25
+    SPBRGH = 0;
+    //recepcion
+    RCSTAbits.SPEN = 1;
+    RCSTAbits.RX9 = 0;
+    //se encienden modulos
+    RCSTAbits.CREN = 1;
+    TXSTAbits.TXEN = 1;
     
     //CONFIGURACION DE INTERRUPCIONES
     INTCONbits.GIE=1;       //se habilitan interrupciones globales
     INTCONbits.PEIE = 1;    //habilitan interrupciones por perifericos
     INTCONbits.T0IE=1;      //se habilita interrupcion timer0
     INTCONbits.T0IF=0;      //se baja bandera de timer0
-    PIE1bits.ADIE=1;        //se habilita interrupcion del ADC
-    PIR1bits.ADIF=0;
-    
+    PIR1bits.RCIF = 0;
+    PIE1bits.RCIE = 1;
+    return;
 }
 
 /*-----------------------------------------------------------------------------

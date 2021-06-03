@@ -2659,13 +2659,16 @@ unsigned char potenciometro1 [5] = {0x04,0x05,0x06,0x07,0x08};
 int cuenta;
 uint8_t potValue;
 uint8_t botonPrevState;
-int antirrebote=0;
+int antirrebote1;
+int antirrebote2;
+char dato_recibido;
 
 
 
 
 void __attribute__((picinterrupt(("")))) isr(void)
 {
+
     if (INTCONbits.T0IF)
     {
         if (cuenta >0 && cuenta <340)
@@ -2706,8 +2709,25 @@ void __attribute__((picinterrupt(("")))) isr(void)
         }
     }
 
-    if (PIR1bits.ADIF)
+
+    if(PIR1bits.RCIF)
     {
+        RCREG=dato_recibido;
+    }
+}
+
+
+
+
+
+void main(void)
+{
+    setup();
+    _delay((unsigned long)((100)*(4000000/4000000.0)));
+    ADCON0bits.GO=1;
+    while(1)
+    {
+
         if (ADCON0bits.GO==0)
         {
             switch(ADCON0bits.CHS)
@@ -2734,21 +2754,103 @@ void __attribute__((picinterrupt(("")))) isr(void)
             ADCON0bits.GO=1;
         }
 
-    }
-}
+        if (RB0 == 1)
+            antirrebote1 = 1;
+
+        if (RB0 == 0 && antirrebote1 == 1)
+        {
+            switch(antirrebote1)
+            {
+                case(1):
+                    writeToEEPROM(cuenta, potenciometro1[0]);
+                    antirrebote1++;
+                    break;
+
+                case(2):
+                    writeToEEPROM(cuenta, potenciometro1[1]);
+                    antirrebote1++;
+                    break;
+
+                case(3):
+                    writeToEEPROM(cuenta, potenciometro1[2]);
+                    antirrebote1++;
+                    break;
+
+                case(4):
+                    writeToEEPROM(cuenta, potenciometro1[3]);
+                    antirrebote1++;
+                    break;
+            }
+            if (antirrebote1>4)
+            {
+                antirrebote1=0;
+            }
+        }
+
+        if (RB1 == 1)
+            antirrebote2 = 1;
+
+        if (RB0 == 0 && antirrebote2 == 1)
+        {
+             switch(antirrebote2)
+             {
+                 case(1):
+                     readFromEEPROM(potenciometro1[0]);
+                     antirrebote2++;
+                     _delay((unsigned long)((100)*(4000000/4000.0)));
+                     break;
+
+                 case(2):
+                     readFromEEPROM(potenciometro1[1]);
+                     antirrebote2++;
+                     _delay((unsigned long)((100)*(4000000/4000.0)));
+                     break;
+
+                 case(3):
+                     readFromEEPROM(potenciometro1[2]);
+                     antirrebote2++;
+                     _delay((unsigned long)((100)*(4000000/4000.0)));
+                     break;
+
+                 case(4):
+                     readFromEEPROM(potenciometro1[3]);
+                     antirrebote2++;
+                     _delay((unsigned long)((100)*(4000000/4000.0)));
+                     break;
+             }
+             if (antirrebote2>4)
+             {
+                 antirrebote2=0;
+             }
+        }
+
+
+        switch(dato_recibido)
+        {
+            case(48):
+                cuenta=200;
+                TMR0 = 70;
+                _delay((unsigned long)((100)*(4000000/4000.0)));
+                break;
+
+            case(49):
+                cuenta=500;
+                TMR0 = 72;
+                _delay((unsigned long)((100)*(4000000/4000.0)));
+                break;
+
+            case(50):
+                cuenta=800;
+                TMR0 = 74;
+                _delay((unsigned long)((100)*(4000000/4000.0)));
+                break;
+
+        }
 
 
 
 
 
-void main(void)
-{
-    setup();
-    _delay((unsigned long)((100)*(4000000/4000000.0)));
-    ADCON0bits.GO=1;
-    while(1)
-    {
-# 213 "proyectofinal_main.c"
     }
 }
 
@@ -2765,7 +2867,7 @@ void setup(void)
     TRISAbits.TRISA1=1;
     TRISAbits.TRISA2=1;
 
-    TRISBbits.TRISB0=1;
+    TRISB=0xff;
 
     TRISD=0x00;
     TRISE=0x00;
@@ -2784,10 +2886,7 @@ void setup(void)
     OPTION_REGbits.PSA = 0;
     OPTION_REGbits.PS = 0b111;
     TMR0 = 78;
-
-
-
-
+# 296 "proyectofinal_main.c"
     ADCON1bits.ADFM = 0 ;
     ADCON1bits.VCFG0 = 0 ;
     ADCON1bits.VCFG1 = 0 ;
@@ -2822,14 +2921,27 @@ void setup(void)
 
 
 
+    TXSTAbits.SYNC = 0;
+    TXSTAbits.BRGH = 1;
+
+    BAUDCTLbits.BRG16 = 1;
+    SPBRG = 25;
+    SPBRGH = 0;
+
+    RCSTAbits.SPEN = 1;
+    RCSTAbits.RX9 = 0;
+
+    RCSTAbits.CREN = 1;
+    TXSTAbits.TXEN = 1;
+
 
     INTCONbits.GIE=1;
     INTCONbits.PEIE = 1;
     INTCONbits.T0IE=1;
     INTCONbits.T0IF=0;
-    PIE1bits.ADIE=1;
-    PIR1bits.ADIF=0;
-
+    PIR1bits.RCIF = 0;
+    PIE1bits.RCIE = 1;
+    return;
 }
 
 
