@@ -2646,24 +2646,22 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 # 38 "proyectofinal_main.c" 2
-# 49 "proyectofinal_main.c"
+# 48 "proyectofinal_main.c"
 void setup(void);
+void writeToEEPROM(uint8_t data, uint8_t address);
+uint8_t readFromEEPROM(uint8_t address);
 
-void transmision_tx(char data);
-
-void USART_Cadena(char *str);
-
-char recepcion_rx();
+unsigned char potenciometro1 [5] = {0x04,0x05,0x06,0x07,0x08 };
 
 
 
 
 int cuenta;
-char dato_recibido;
-char dato ;
+uint8_t potValue;
+uint8_t botonPrevState;
+int antirrebote;
 
-const char data = 10;
-char out_str;
+
 
 
 
@@ -2717,23 +2715,9 @@ void __attribute__((picinterrupt(("")))) isr(void)
             {
                 cuenta=ADRESH;
                 _delay((unsigned long)((100)*(4000000/4000000.0)));
-                ADCON0bits.CHS=1;
-            }
-            else if (ADCON0bits.CHS==1)
-            {
-                CCPR1L =ADRESH;
-                _delay((unsigned long)((100)*(4000000/4000000.0)));
-                ADCON0bits.CHS=2;
-            }
-            else
-            {
-                CCPR2L =ADRESH;
-                _delay((unsigned long)((100)*(4000000/4000000.0)));
-                ADCON0bits.CHS=0;
+                ADCON0bits.GO=1;
             }
         }
-        ADCON0bits.GO=1;
-        PIR1bits.ADIF=0;
 
     }
 }
@@ -2749,33 +2733,8 @@ void main(void)
     ADCON0bits.GO=1;
     while(1)
     {
-       USART_Cadena("\r wenaaaaaaaas");
 
-       if (PIR1bits.RCIF==0)
-       {
-           dato_recibido = recepcion_rx;
-       }
 
-       switch(dato_recibido)
-        {
-
-            case ('1'):
-                cuenta=300;
-                transmision_tx('Servo 1 a 0');
-                PORTDbits.RD3=1;
-                break;
-
-            case ('2'):
-                cuenta=500;
-                transmision_tx('Servo 1 a 90');
-                PORTDbits.RD4=1;
-                break;
-            case ('3'):
-                cuenta=800;
-                transmision_tx('Servo 1 a 180');
-                PORTDbits.RD5=1;
-                break;
-       }
     }
 
 }
@@ -2793,13 +2752,13 @@ void setup(void)
     TRISAbits.TRISA1=1;
     TRISAbits.TRISA2=1;
 
-
+    TRISBbits.TRISB0=1;
 
     TRISD=0x00;
     TRISE=0x00;
 
     PORTA=0x00;
-
+    PORTB=0x00;
     PORTD=0x00;
     PORTE=0x00;
 
@@ -2847,22 +2806,8 @@ void setup(void)
     PIR1bits.TMR2IF=0;
     TRISCbits.TRISC2 = 0;
     TRISCbits.TRISC1= 0;
-    PR2 = 10;
 
 
-
-    TXSTAbits.SYNC = 0;
-    TXSTAbits.BRGH = 1;
-    BAUDCTLbits.BRG16 = 1;
-
-    SPBRG = 104;
-    SPBRGH = 0;
-
-    RCSTAbits.SPEN = 1;
-    RCSTAbits.RX9 = 0;
-
-    RCSTAbits.CREN = 1;
-    TXSTAbits.TXEN = 1;
 
 
 
@@ -2873,43 +2818,41 @@ void setup(void)
     INTCONbits.T0IF=0;
     PIE1bits.ADIE=1;
     PIR1bits.ADIF=0;
-}
-
-
-
-
-
-char recepcion_rx()
-{
-    return RCREG;
-}
-
-
-void transmision_tx(char data)
-{
-    while(TXSTAbits.TRMT == 0)
-    {
-        TXREG = data;
-    }
-}
-
-
-void USART_Cadena(char *str)
-{
-    while(*str != '\0')
-    {
-        transmision_tx(*str);
-        str++;
-    }
-}
-
-void writeToEEPROM(char data, int address)
-{
 
 }
 
 
-unsigned char readFromEEPROM(int address)
-{
 
+
+
+void writeToEEPROM(uint8_t data, uint8_t address)
+{
+    EEADR = address;
+    EEDAT = data;
+
+    EECON1bits.EEPGD = 0;
+    EECON1bits.WREN = 1;
+
+    INTCONbits.GIE = 0;
+
+    EECON2 = 0x55;
+    EECON2 = 0xAA;
+    EECON1bits.WR = 1;
+
+    while(PIR2bits.EEIF==0);
+    PIR2bits.EEIF = 0;
+
+    INTCONbits.GIE = 1;
+    EECON1bits.WREN = 0;
+    return;
+}
+
+
+uint8_t readFromEEPROM(uint8_t address)
+{
+    EEADR = address;
+    EECON1bits.EEPGD = 0;
+    EECON1bits.RD = 1;
+    uint8_t data = EEDAT;
+    return data;
 }
