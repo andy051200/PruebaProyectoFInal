@@ -49,20 +49,21 @@ void setup(void);
 void writeToEEPROM(uint8_t data, uint8_t address);
 uint8_t readFromEEPROM(uint8_t address);
 
-unsigned char potenciometro1 [5] = {0x04,0x05,0x06,0x07,0x08};
 
 /*-----------------------------------------------------------------------------
  ----------------------- VARIABLES A IMPLEMTENTAR------------------------------
  -----------------------------------------------------------------------------*/
-int cuenta;
-uint8_t potValue;
-uint8_t botonPrevState;
-int antirrebote1;
-int antirrebote2;
+char cuenta;
+char antirrebote1;
+char antirrebote1_posicion=1;
+char antirrebote2;
+char antirrebote2_posicion=1;
 char dato_recibido;
 char estado1_servos=48;
 char estado2_servos=49;
 char estado3_servos=50;
+
+unsigned char potenciometro1 [5] = {0x04,0x05,0x06,0x07,0x08};
 //int botonPrevState;
 /*-----------------------------------------------------------------------------
  ---------------------------- INTERRUPCIONES ----------------------------------
@@ -72,7 +73,7 @@ void __interrupt() isr(void) //funcion de interrupciones
     //interrupcion por timer0
     if (INTCONbits.T0IF)
     {
-        if (cuenta >0 && cuenta <340)  //variar oscilacion de 18ms
+        if (cuenta >0 && cuenta <85)  //variar oscilacion de 18ms
         {
             PORTDbits.RD0=1;
             PORTDbits.RD1=1;
@@ -84,7 +85,7 @@ void __interrupt() isr(void) //funcion de interrupciones
             TMR0 = 70;  
             INTCONbits.T0IF = 0;
         }
-        else if (cuenta >340 && cuenta <682)    //variar oscilacion de 18.5ms
+        else if (cuenta >85 && cuenta <170)    //variar oscilacion de 18.5ms
         {
             PORTDbits.RD0=1;
             PORTDbits.RD1=1;
@@ -136,7 +137,7 @@ void main(void)
                 case(0):
                     cuenta=ADRESH;  //potenciometro 1
                     __delay_us(100);
-                    ADCON0bits.GO=1;
+                    ADCON0bits.CHS=1;
                     break;
                     
                 case(1):
@@ -155,73 +156,79 @@ void main(void)
             ADCON0bits.GO=1;   
         }
         //---------------escritura de EEPROM
-        if (RB0 == 1)
-            antirrebote1 = 1;
-        
-        if (RB0 == 0 && antirrebote1 == 1)
+        if (PORTBbits.RB0 ==0)
         {
-            switch(antirrebote1)
+            antirrebote1 = 1;
+        }
+        
+        if (PORTBbits.RB0 == 1 && antirrebote1 == 1)
+        {         
+            switch(antirrebote1_posicion)
             {
                 case(1):
                     writeToEEPROM(cuenta, potenciometro1[0]);
-                    antirrebote1++;
+                    antirrebote1_posicion=2;
                     break;
                 
                 case(2):
                     writeToEEPROM(cuenta, potenciometro1[1]);
-                    antirrebote1++;
+                    antirrebote1_posicion=3;
                     break;
                 
                 case(3):
                     writeToEEPROM(cuenta, potenciometro1[2]);
-                    antirrebote1++;
+                    antirrebote1_posicion=4;
                     break;
                 
                 case(4):
                     writeToEEPROM(cuenta, potenciometro1[3]);
-                    antirrebote1++;
+                    antirrebote1_posicion=1;
                     break;
+
             }
-            if (antirrebote1>4)
+            if (antirrebote1_posicion>=5)
             {
-                antirrebote1=0;
+                antirrebote1_posicion=0;
             }
         }
         //---------------- lectura desde EEPROM
-        if (RB1 == 1)
-            antirrebote2 = 1;
-        
-        if (RB0 == 0 && antirrebote2 == 1)
+        if (PORTBbits.RB1 == 0)
         {
-             switch(antirrebote2)
+            antirrebote2 = 1;
+        }
+        
+        if (PORTAbits.RA4  == 1 && antirrebote2 == 1)
+        {
+            antirrebote2=0;
+             switch(antirrebote2_posicion)
              {
-                 case(1):
+                 case(1):       //inclur prender ledas
                      readFromEEPROM(potenciometro1[0]);
-                     antirrebote2++;
+                     antirrebote2_posicion++;
                      __delay_ms(100);
                      break;
                      
                  case(2):
                      readFromEEPROM(potenciometro1[1]);
-                     antirrebote2++;
+                     antirrebote2_posicion++;
                      __delay_ms(100);
                      break;
                      
                  case(3):
                      readFromEEPROM(potenciometro1[2]);
-                     antirrebote2++;
+                     antirrebote2_posicion++;
                      __delay_ms(100);
                      break;
                      
                  case(4):
                      readFromEEPROM(potenciometro1[3]);
-                     antirrebote2++;
+                     antirrebote2_posicion++;
                      __delay_ms(100);
                      break;   
              }
-             if (antirrebote2>4)
+             if (antirrebote2_posicion>4)
              {
-                 antirrebote2=0;
+                 antirrebote2_posicion=0;
              }
         }
         
@@ -229,20 +236,20 @@ void main(void)
         switch(dato_recibido)
         {
             case(48):       //ver si recibio un 0 en ascii
-                cuenta=200;
+                cuenta=50;
                 TMR0 = 70;
                 TXREG = estado1_servos;     //manda de vuelta el valor asquii
                 break;
                 
             case(49):       //ver si recibio un 1 en ascii
-                cuenta=500;
+                cuenta=150;
                 TMR0 = 72;
                 TXREG=estado2_servos;
                 __delay_ms(100);
                 break;
                 
             case(50):       //ver si recibio un 20 en ascii
-                cuenta=800;
+                cuenta=200;
                 TMR0 = 74;
                 TXREG=estado3_servos;
                 __delay_ms(100);
@@ -252,12 +259,7 @@ void main(void)
                 readFromEEPROM(potenciometro1[0]);
                 __delay_ms(100);
                 break;
-        }
-        
-        //-------transmisioon UART
-        
-        
-        
+        }    
     }
 }
 /*-----------------------------------------------------------------------------
@@ -266,23 +268,27 @@ void main(void)
 void setup(void)
 {
     //CONFIGURACION DE ENTRDAS Y SALIDAS
+    ANSEL=0;
+    ANSELH=0;
     ANSELbits.ANS0=1;       //An0 como entrada analogica
     ANSELbits.ANS1=1;       //An1 como entrada analogica
     ANSELbits.ANS2=1;       //An2 como entrada analogica
     
-    TRISAbits.TRISA0=1;     //RA0 como entrada
-    TRISAbits.TRISA1=1;     //RA1 como entrada
-    TRISAbits.TRISA2=1;     //RA2 como entrada
+    TRISAbits.TRISA0=1;     //entrada para AN0
+    TRISAbits.TRISA1=1;     //entrada para AN1
+    TRISAbits.TRISA2=1;     //entrada para AN2
+
+    TRISBbits.TRISB0=1;     //RB0 como entrada
+    TRISBbits.TRISB1=1;     //RB1 como entrada
     
-    TRISB=0xff;     //RB0 como entrada
-    
-    TRISD=0x00;             //PortD como salida
-    TRISE=0x00;
-    
+    TRISDbits.TRISD0=0;     //salida para servo1
+    TRISDbits.TRISD1=0;     //salida para servo2
+    TRISDbits.TRISD2=0;     //salida para servo3
+    TRISDbits.TRISD4=0;     //salida para led1
+    TRISDbits.TRISD5=0;     //salida para led2
+
     PORTA=0x00;
-    PORTB=0x00;
     PORTD=0x00;
-    PORTE=0x00;
     
     //CONFIGURACION DE RELOJ
     OSCCONbits.IRCF = 0b110; //Config. de oscilacion 4MHz
@@ -294,12 +300,10 @@ void setup(void)
     OPTION_REGbits.PS = 0b111;  //PS = 111 / 1:256
     TMR0 = 78;                  //Reinicio del timmer
     
-    //OPTION_REGbits.nRBPU = 0; // enable Individual pull-ups
-    //WPUBbits.WPUB0 = 1;
-    
-    
-    
-    //CONFIGURACION DEL TIMER1
+    OPTION_REGbits.nRBPU = 0;   // enable Individual pull-ups
+    WPUBbits.WPUB0 = 1;         // enable Pull-Up de RB0 & RB1
+    WPUBbits.WPUB1 = 1;         // 
+    //WPUBbits.WPUB2 = 1;         //
     
     //CONFIGURACION DEL ADC **3 CANALES
     ADCON1bits.ADFM = 0 ;   // se justifica a la isquierda
@@ -354,8 +358,8 @@ void setup(void)
     INTCONbits.PEIE = 1;    //habilitan interrupciones por perifericos
     INTCONbits.T0IE=1;      //se habilita interrupcion timer0
     INTCONbits.T0IF=0;      //se baja bandera de timer0
-    PIR1bits.RCIF = 0;
-    PIE1bits.RCIE = 1;
+    PIR2bits.EEIF = 0;
+    PIE2bits.EEIE= 0;
     return;
 }
 
@@ -365,6 +369,7 @@ void setup(void)
 //funcion para escribir en la EEPROM
 void writeToEEPROM(uint8_t data, uint8_t address)
 {
+    PORTCbits.RC4=1;
     EEADR = address;        // argumento para direccion de EEPROM 
     EEDAT = data;           // argumento para el dato a almacenar
     
@@ -377,20 +382,24 @@ void writeToEEPROM(uint8_t data, uint8_t address)
     EECON2 = 0xAA;          // secuencia obligatoria
     EECON1bits.WR = 1;      // se habilita la escritura
     
-    while(PIR2bits.EEIF==0);    //mini loop
+    //while(PIR2bits.EEIF==0);    //mini loop
+    __delay_ms(300);
     PIR2bits.EEIF = 0;
     
     INTCONbits.GIE = 1;     // Habilitar interrupciones
     EECON1bits.WREN = 0;    // Deshabilitar escritura de EEPROM
+    PORTCbits.RC4=0;
     return;
 }
 
 //funcion para leer de la EEPROM
 uint8_t readFromEEPROM(uint8_t address)
 {
+    PORTCbits.RC5=1;
     EEADR = address;        // direccion a leer
     EECON1bits.EEPGD = 0;   // memoria de datos
     EECON1bits.RD = 1;      // hace una lectura
     uint8_t data = EEDAT;   // guardar el dato le�do de EEPROM
+    PORTCbits.RC5=0;
     return data;
 }

@@ -2651,20 +2651,21 @@ void setup(void);
 void writeToEEPROM(uint8_t data, uint8_t address);
 uint8_t readFromEEPROM(uint8_t address);
 
-unsigned char potenciometro1 [5] = {0x04,0x05,0x06,0x07,0x08};
 
 
 
 
-int cuenta;
-uint8_t potValue;
-uint8_t botonPrevState;
-int antirrebote1;
-int antirrebote2;
+char cuenta;
+char antirrebote1;
+char antirrebote1_posicion=1;
+char antirrebote2;
+char antirrebote2_posicion=1;
 char dato_recibido;
 char estado1_servos=48;
 char estado2_servos=49;
 char estado3_servos=50;
+
+unsigned char potenciometro1 [5] = {0x04,0x05,0x06,0x07,0x08};
 
 
 
@@ -2674,7 +2675,7 @@ void __attribute__((picinterrupt(("")))) isr(void)
 
     if (INTCONbits.T0IF)
     {
-        if (cuenta >0 && cuenta <340)
+        if (cuenta >0 && cuenta <85)
         {
             PORTDbits.RD0=1;
             PORTDbits.RD1=1;
@@ -2686,7 +2687,7 @@ void __attribute__((picinterrupt(("")))) isr(void)
             TMR0 = 70;
             INTCONbits.T0IF = 0;
         }
-        else if (cuenta >340 && cuenta <682)
+        else if (cuenta >85 && cuenta <170)
         {
             PORTDbits.RD0=1;
             PORTDbits.RD1=1;
@@ -2738,7 +2739,7 @@ void main(void)
                 case(0):
                     cuenta=ADRESH;
                     _delay((unsigned long)((100)*(4000000/4000000.0)));
-                    ADCON0bits.GO=1;
+                    ADCON0bits.CHS=1;
                     break;
 
                 case(1):
@@ -2757,73 +2758,79 @@ void main(void)
             ADCON0bits.GO=1;
         }
 
-        if (RB0 == 1)
-            antirrebote1 = 1;
-
-        if (RB0 == 0 && antirrebote1 == 1)
+        if (PORTBbits.RB0 ==0)
         {
-            switch(antirrebote1)
+            antirrebote1 = 1;
+        }
+
+        if (PORTBbits.RB0 == 1 && antirrebote1 == 1)
+        {
+            switch(antirrebote1_posicion)
             {
                 case(1):
                     writeToEEPROM(cuenta, potenciometro1[0]);
-                    antirrebote1++;
+                    antirrebote1_posicion=2;
                     break;
 
                 case(2):
                     writeToEEPROM(cuenta, potenciometro1[1]);
-                    antirrebote1++;
+                    antirrebote1_posicion=3;
                     break;
 
                 case(3):
                     writeToEEPROM(cuenta, potenciometro1[2]);
-                    antirrebote1++;
+                    antirrebote1_posicion=4;
                     break;
 
                 case(4):
                     writeToEEPROM(cuenta, potenciometro1[3]);
-                    antirrebote1++;
+                    antirrebote1_posicion=1;
                     break;
+
             }
-            if (antirrebote1>4)
+            if (antirrebote1_posicion>=5)
             {
-                antirrebote1=0;
+                antirrebote1_posicion=0;
             }
         }
 
-        if (RB1 == 1)
-            antirrebote2 = 1;
-
-        if (RB0 == 0 && antirrebote2 == 1)
+        if (PORTBbits.RB1 == 0)
         {
-             switch(antirrebote2)
+            antirrebote2 = 1;
+        }
+
+        if (PORTAbits.RA4 == 1 && antirrebote2 == 1)
+        {
+            antirrebote2=0;
+             switch(antirrebote2_posicion)
              {
                  case(1):
                      readFromEEPROM(potenciometro1[0]);
-                     antirrebote2++;
+                     antirrebote2_posicion++;
                      _delay((unsigned long)((100)*(4000000/4000.0)));
                      break;
 
                  case(2):
                      readFromEEPROM(potenciometro1[1]);
-                     antirrebote2++;
+                     antirrebote2_posicion++;
                      _delay((unsigned long)((100)*(4000000/4000.0)));
                      break;
 
                  case(3):
                      readFromEEPROM(potenciometro1[2]);
-                     antirrebote2++;
+                     antirrebote2_posicion++;
                      _delay((unsigned long)((100)*(4000000/4000.0)));
                      break;
 
                  case(4):
                      readFromEEPROM(potenciometro1[3]);
-                     antirrebote2++;
+                     antirrebote2_posicion++;
                      _delay((unsigned long)((100)*(4000000/4000.0)));
                      break;
              }
-             if (antirrebote2>4)
+             if (antirrebote2_posicion>4)
              {
-                 antirrebote2=0;
+                 antirrebote2_posicion=0;
              }
         }
 
@@ -2831,20 +2838,20 @@ void main(void)
         switch(dato_recibido)
         {
             case(48):
-                cuenta=200;
+                cuenta=50;
                 TMR0 = 70;
                 TXREG = estado1_servos;
                 break;
 
             case(49):
-                cuenta=500;
+                cuenta=150;
                 TMR0 = 72;
                 TXREG=estado2_servos;
                 _delay((unsigned long)((100)*(4000000/4000.0)));
                 break;
 
             case(50):
-                cuenta=800;
+                cuenta=200;
                 TMR0 = 74;
                 TXREG=estado3_servos;
                 _delay((unsigned long)((100)*(4000000/4000.0)));
@@ -2855,11 +2862,6 @@ void main(void)
                 _delay((unsigned long)((100)*(4000000/4000.0)));
                 break;
         }
-
-
-
-
-
     }
 }
 
@@ -2868,6 +2870,8 @@ void main(void)
 void setup(void)
 {
 
+    ANSEL=0;
+    ANSELH=0;
     ANSELbits.ANS0=1;
     ANSELbits.ANS1=1;
     ANSELbits.ANS2=1;
@@ -2876,15 +2880,17 @@ void setup(void)
     TRISAbits.TRISA1=1;
     TRISAbits.TRISA2=1;
 
-    TRISB=0xff;
+    TRISBbits.TRISB0=1;
+    TRISBbits.TRISB1=1;
 
-    TRISD=0x00;
-    TRISE=0x00;
+    TRISDbits.TRISD0=0;
+    TRISDbits.TRISD1=0;
+    TRISDbits.TRISD2=0;
+    TRISDbits.TRISD4=0;
+    TRISDbits.TRISD5=0;
 
     PORTA=0x00;
-    PORTB=0x00;
     PORTD=0x00;
-    PORTE=0x00;
 
 
     OSCCONbits.IRCF = 0b110;
@@ -2895,7 +2901,13 @@ void setup(void)
     OPTION_REGbits.PSA = 0;
     OPTION_REGbits.PS = 0b111;
     TMR0 = 78;
-# 305 "proyectofinal_main.c"
+
+    OPTION_REGbits.nRBPU = 0;
+    WPUBbits.WPUB0 = 1;
+    WPUBbits.WPUB1 = 1;
+
+
+
     ADCON1bits.ADFM = 0 ;
     ADCON1bits.VCFG0 = 0 ;
     ADCON1bits.VCFG1 = 0 ;
@@ -2948,8 +2960,8 @@ void setup(void)
     INTCONbits.PEIE = 1;
     INTCONbits.T0IE=1;
     INTCONbits.T0IF=0;
-    PIR1bits.RCIF = 0;
-    PIE1bits.RCIE = 1;
+    PIR2bits.EEIF = 0;
+    PIE2bits.EEIE= 0;
     return;
 }
 
@@ -2959,6 +2971,7 @@ void setup(void)
 
 void writeToEEPROM(uint8_t data, uint8_t address)
 {
+    PORTCbits.RC4=1;
     EEADR = address;
     EEDAT = data;
 
@@ -2971,20 +2984,24 @@ void writeToEEPROM(uint8_t data, uint8_t address)
     EECON2 = 0xAA;
     EECON1bits.WR = 1;
 
-    while(PIR2bits.EEIF==0);
+
+    _delay((unsigned long)((300)*(4000000/4000.0)));
     PIR2bits.EEIF = 0;
 
     INTCONbits.GIE = 1;
     EECON1bits.WREN = 0;
+    PORTCbits.RC4=0;
     return;
 }
 
 
 uint8_t readFromEEPROM(uint8_t address)
 {
+    PORTCbits.RC5=1;
     EEADR = address;
     EECON1bits.EEPGD = 0;
     EECON1bits.RD = 1;
     uint8_t data = EEDAT;
+    PORTCbits.RC5=0;
     return data;
 }
