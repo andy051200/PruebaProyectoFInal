@@ -2662,6 +2662,9 @@ uint8_t botonPrevState;
 int antirrebote1;
 int antirrebote2;
 char dato_recibido;
+char estado1_servos=48;
+char estado2_servos=49;
+char estado3_servos=50;
 
 
 
@@ -2830,21 +2833,27 @@ void main(void)
             case(48):
                 cuenta=200;
                 TMR0 = 70;
-                _delay((unsigned long)((100)*(4000000/4000.0)));
+                TXREG = estado1_servos;
                 break;
 
             case(49):
                 cuenta=500;
                 TMR0 = 72;
+                TXREG=estado2_servos;
                 _delay((unsigned long)((100)*(4000000/4000.0)));
                 break;
 
             case(50):
                 cuenta=800;
                 TMR0 = 74;
+                TXREG=estado3_servos;
                 _delay((unsigned long)((100)*(4000000/4000.0)));
                 break;
 
+            case(51):
+                readFromEEPROM(potenciometro1[0]);
+                _delay((unsigned long)((100)*(4000000/4000.0)));
+                break;
         }
 
 
@@ -2886,7 +2895,7 @@ void setup(void)
     OPTION_REGbits.PSA = 0;
     OPTION_REGbits.PS = 0b111;
     TMR0 = 78;
-# 296 "proyectofinal_main.c"
+# 305 "proyectofinal_main.c"
     ADCON1bits.ADFM = 0 ;
     ADCON1bits.VCFG0 = 0 ;
     ADCON1bits.VCFG1 = 0 ;

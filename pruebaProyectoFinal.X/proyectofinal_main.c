@@ -60,6 +60,9 @@ uint8_t botonPrevState;
 int antirrebote1;
 int antirrebote2;
 char dato_recibido;
+char estado1_servos=48;
+char estado2_servos=49;
+char estado3_servos=50;
 //int botonPrevState;
 /*-----------------------------------------------------------------------------
  ---------------------------- INTERRUPCIONES ----------------------------------
@@ -228,20 +231,20 @@ void main(void)
             case(48):       //ver si recibio un 0 en ascii
                 cuenta=200;
                 TMR0 = 70;
-                
-                __delay_ms(100);
-               
+                TXREG = estado1_servos;     //manda de vuelta el valor asquii
                 break;
                 
             case(49):       //ver si recibio un 1 en ascii
                 cuenta=500;
                 TMR0 = 72;
+                TXREG=estado2_servos;
                 __delay_ms(100);
                 break;
                 
             case(50):       //ver si recibio un 20 en ascii
                 cuenta=800;
                 TMR0 = 74;
+                TXREG=estado3_servos;
                 __delay_ms(100);
                 break;
             
