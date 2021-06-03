@@ -2651,7 +2651,7 @@ void setup(void);
 void writeToEEPROM(uint8_t data, uint8_t address);
 uint8_t readFromEEPROM(uint8_t address);
 
-unsigned char potenciometro1 [5] = {0x04,0x05,0x06,0x07,0x08 };
+unsigned char potenciometro1 [5] = {0x04,0x05,0x06,0x07,0x08};
 
 
 
@@ -2659,8 +2659,7 @@ unsigned char potenciometro1 [5] = {0x04,0x05,0x06,0x07,0x08 };
 int cuenta;
 uint8_t potValue;
 uint8_t botonPrevState;
-int antirrebote;
-
+int antirrebote=0;
 
 
 
@@ -2705,18 +2704,34 @@ void __attribute__((picinterrupt(("")))) isr(void)
             TMR0 = 74;
             INTCONbits.T0IF=0;
         }
-
     }
+
     if (PIR1bits.ADIF)
     {
         if (ADCON0bits.GO==0)
         {
-            if (ADCON0bits.CHS==0)
+            switch(ADCON0bits.CHS)
             {
-                cuenta=ADRESH;
-                _delay((unsigned long)((100)*(4000000/4000000.0)));
-                ADCON0bits.GO=1;
+                case(0):
+                    cuenta=ADRESH;
+                    _delay((unsigned long)((100)*(4000000/4000000.0)));
+                    ADCON0bits.GO=1;
+                    break;
+
+                case(1):
+                    CCPR1L =ADRESH;
+                    _delay((unsigned long)((100)*(4000000/4000000.0)));
+                    ADCON0bits.CHS=2;
+                    break;
+
+                case(2):
+                    CCPR2L =ADRESH;
+                    _delay((unsigned long)((100)*(4000000/4000000.0)));
+                    ADCON0bits.CHS=0;
+                    break;
             }
+            _delay((unsigned long)((100)*(4000000/4000000.0)));
+            ADCON0bits.GO=1;
         }
 
     }
@@ -2733,10 +2748,8 @@ void main(void)
     ADCON0bits.GO=1;
     while(1)
     {
-
-
+# 213 "proyectofinal_main.c"
     }
-
 }
 
 
@@ -2806,8 +2819,6 @@ void setup(void)
     PIR1bits.TMR2IF=0;
     TRISCbits.TRISC2 = 0;
     TRISCbits.TRISC1= 0;
-
-
 
 
 

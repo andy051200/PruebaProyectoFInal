@@ -49,7 +49,7 @@ void setup(void);
 void writeToEEPROM(uint8_t data, uint8_t address);
 uint8_t readFromEEPROM(uint8_t address);
 
-unsigned char potenciometro1 [5] = {0x04,0x05,0x06,0x07,0x08 };
+unsigned char potenciometro1 [5] = {0x04,0x05,0x06,0x07,0x08};
 
 /*-----------------------------------------------------------------------------
  ----------------------- VARIABLES A IMPLEMTENTAR------------------------------
@@ -57,8 +57,7 @@ unsigned char potenciometro1 [5] = {0x04,0x05,0x06,0x07,0x08 };
 int cuenta;
 uint8_t potValue;
 uint8_t botonPrevState;
-int antirrebote;
-
+int antirrebote=0;
 
 /*-----------------------------------------------------------------------------
  ---------------------------- INTERRUPCIONES ----------------------------------
@@ -76,7 +75,7 @@ void __interrupt() isr(void) //funcion de interrupciones
             PORTDbits.RD0=0;
             PORTDbits.RD1=0;
             PORTDbits.RD2=0;
-            TMR0 = 70;  //POSICION 0°
+            TMR0 = 70;  
             INTCONbits.T0IF = 0;
         }
         else if (cuenta >340 && cuenta <682)
@@ -103,18 +102,34 @@ void __interrupt() isr(void) //funcion de interrupciones
             TMR0 = 74;
             INTCONbits.T0IF=0;
         }
-        
     }
+    
     if (PIR1bits.ADIF)
     {
         if (ADCON0bits.GO==0)
         {
-            if (ADCON0bits.CHS==0) 
+            switch(ADCON0bits.CHS)
             {
-                cuenta=ADRESH;
-                __delay_us(100);
-                ADCON0bits.GO=1;
+                case(0):
+                    cuenta=ADRESH;  //potenciometro 1
+                    __delay_us(100);
+                    ADCON0bits.GO=1;
+                    break;
+                    
+                case(1):
+                    CCPR1L =ADRESH;             //valor de pot2 en CCP1
+                    __delay_us(100);            //delay para cargar capacitor
+                    ADCON0bits.CHS=2;           //switch de canal
+                    break;
+                    
+                case(2):
+                    CCPR2L =ADRESH;             //valor del pot3 en CCP2
+                    __delay_us(100);            //delay para cargar capacitor
+                    ADCON0bits.CHS=0;           //switch de canal
+                    break;
             }
+            __delay_us(100);
+            ADCON0bits.GO=1;   
         }
     
     }
@@ -131,10 +146,71 @@ void main(void)
     ADCON0bits.GO=1;
     while(1)
     {
-    
+//        if (RB0 == 1)
+//        {
+//            while(RB0==1)
+//            __delay_ms(10);
+//            
+//            antirrebote++;
+//
+//            if (antirrebote>3)
+//            {
+//                antirrebote=0;
+//            }
+//        }
+//        
+//        switch(antirrebote)
+//        {
+//                
+//            case(0):
+//                writeToEEPROM(cuenta, potenciometro1 [0]);
+//                PORTE=antirrebote;
+//                break;
+//                
+//            case(1):
+//                PORTE=antirrebote;
+//                writeToEEPROM(cuenta, potenciometro1 [1]);
+//                break;
+//                
+//            case(2):
+//                PORTE=antirrebote;
+//                writeToEEPROM(cuenta, potenciometro1 [2]);
+//                break;
+//                
+//            case(3):
+//                PORTE=antirrebote;
+//                writeToEEPROM(cuenta, potenciometro1 [3]);
+//                break;
+//        }
+            
+        //--------------------------
+        /*if (ADCON0bits.GO==0)
+        {
+            switch(ADCON0bits.CHS)
+            {
+                case(0):
+                    cuenta=ADRESH;  //potenciometro 1
+                    __delay_us(100);
+                    ADCON0bits.GO=1;
+                    break;
+                    
+                case(1):
+                    CCPR1L =ADRESH;             //valor de pot2 en CCP1
+                    __delay_us(100);            //delay para cargar capacitor
+                    ADCON0bits.CHS=2;           //switch de canal
+                    break;
+                    
+                case(2):
+                    CCPR2L =ADRESH;             //valor del pot3 en CCP2
+                    __delay_us(100);            //delay para cargar capacitor
+                    ADCON0bits.CHS=0;           //switch de canal
+                    break;
+            }
+            __delay_us(100);
+            ADCON0bits.GO=1;   
+        }*/
         
     }
-    
 }
 /*-----------------------------------------------------------------------------
  ---------------------------------- SET UP -----------------------------------
@@ -206,8 +282,6 @@ void setup(void)
     TRISCbits.TRISC1= 0;        // salida del pwm 2
    
     //CONFIGURACION DE UART
-    
-    //CONFIGURACION DE EEPROM
     
     //CONFIGURACION DE INTERRUPCIONES
     INTCONbits.GIE=1;       //se habilitan interrupciones globales
