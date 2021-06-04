@@ -284,9 +284,7 @@ void setup(void)
     TRISDbits.TRISD0=0;     //salida para servo1
     TRISDbits.TRISD1=0;     //salida para servo2
     TRISDbits.TRISD2=0;     //salida para servo3
-    TRISDbits.TRISD4=0;     //salida para led1
-    TRISDbits.TRISD5=0;     //salida para led2
-
+    
     PORTA=0x00;
     PORTD=0x00;
     
@@ -300,10 +298,10 @@ void setup(void)
     OPTION_REGbits.PS = 0b111;  //PS = 111 / 1:256
     TMR0 = 78;                  //Reinicio del timmer
     
+    //WEAK PULL UPs PORTB
     OPTION_REGbits.nRBPU = 0;   // enable Individual pull-ups
     WPUBbits.WPUB0 = 1;         // enable Pull-Up de RB0 & RB1
     WPUBbits.WPUB1 = 1;         // 
-    //WPUBbits.WPUB2 = 1;         //
     
     //CONFIGURACION DEL ADC **3 CANALES
     ADCON1bits.ADFM = 0 ;   // se justifica a la isquierda
@@ -314,16 +312,15 @@ void setup(void)
     __delay_us(100);         //delay de 50us para que cargue capacitor
     ADCON0bits.ADON = 1 ;   // se prende modulo ADC
     
-    
     //CONFIGURACION DE CCPx
     //CCP1
-    TRISCbits.TRISC2=1;         // RC2/CCP1 como entrada a motor se desconecta
-    CCP1CONbits.P1M = 0;        // configuracion de una señales de salida
+    TRISCbits.TRISC2=1;         // a motor se desconecta
+    CCP1CONbits.P1M = 0;        //
     CCP1CONbits.CCP1M = 0b1100; // se configura como modo PWM
     CCPR1L = 0x0f ;             // ciclo de trabajo inicial de la onda cuadrada
     CCP1CONbits.DC1B = 0;       // LSB para ciclo de trabajo
     //CCP2
-    TRISCbits.TRISC1 = 1;       // RC1/CCP2 como entrada a motor se desconecta
+    TRISCbits.TRISC1 = 1;       // 
     CCP2CONbits.CCP2M = 0b1100; // se configura como modo PWM
     CCPR2L = 0x0f;              // ciclo de trabajo inicial de la onda cuadrada
     CCP2CONbits.DC2B1 = 0;      // LSB para ciclo de trabajo

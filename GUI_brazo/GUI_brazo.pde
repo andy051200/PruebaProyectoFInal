@@ -67,22 +67,6 @@ void serialEvent(Serial myPort)
     dePicInt[i] = dePic[i] & 0xFF;
   }
   
-  
-  //inString = p.readString();
-  /*int input = myPort.read();
-  datosPIC[cont] = input;
-  cont++; 
-  if (cont > 1){
-     valpot = datosPIC[0];
-     delay(5);
-     println(valpot);
-     //myPort.write('A');
-     cont = 0;
-     send = bit1 + bit2 + bit3 + bit4 + bit5;
-     myPort.write(send);*/
-  
-  //fill(300,300,300);
-  //rect(slider1[0],2*slider1[1],300,100);
 }
 
 void serial_comm()
@@ -122,11 +106,6 @@ void draw()
   
   
   fill(1300,1300,1300);
-  //square(boton1[0],boton1[1],boton1[2]);
-  
-  /*rect(boton1[0]-50,2.6*boton1[1],400,100);
-  textSize(15);                                       //tamaño de texto en pantalla
-  text("Valores UART recibidos",boton1[0]+90, 650);*/
   
   //------------------------DIBUJO DE BOTON PARA POSICION 1
   //servos a 0°
@@ -208,8 +187,5 @@ void draw()
       }
     }
   }
-  
-  
- 
-println(dato_transmitido);
+  println(dato_transmitido);
 }
